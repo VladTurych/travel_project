@@ -909,7 +909,7 @@
 
           <!--Grid column-->
           <div class="col-md-11 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+            <form id="contact-form" name="contact-form" action="mail.php" method="GET">
 
               <!--Grid row-->
               <div class="row">
@@ -918,7 +918,7 @@
                 <div class="col-md-6">
                   <div class="md-form mb-0">
                     <label for="name" class="">Your name</label>
-                    <input type="text" id="name" name="name" class="w-100">
+                    <input type="text" id="name" name="name" class="w-100" required>
 
                   </div>
                 </div>
@@ -928,7 +928,7 @@
                 <div class="col-md-6">
                   <div class="md-form ">
                     <label for="email" class="mt-1 mb-1">Your email</label>
-                    <input type="text" id="email" name="email" class="w-100">
+                    <input type="email" id="email" name="email" class="w-100" required>
 
                   </div>
                 </div>
@@ -957,7 +957,7 @@
 
                   <div class="md-form">
                     <label for="message" class="my-3">Your message</label>
-                    <textarea type="text" id="message" name="message" class="w-100 p-2"></textarea>
+                    <textarea type="text" id="message" name="message" class="w-100 p-2" ></textarea>
 
                   </div>
 
@@ -965,13 +965,15 @@
               </div>
               <!--Grid row-->
 
-            </form>
+            
 
             <div class="text-center text-md-left mt-4">
-              <a  class="new-btn_main mt-4 btn__alert" ><span data-hover="Submit">Submit</span></a>
+              <!-- <a  class="new-btn_main mt-4 btn__alert"  type="Submit" ><span data-hover="Submit">Submit</span></a> -->
+              <button class="new-btn_main mt-4 btn__alert  btn__alert" type="submit"><span data-hover="Submit">Submit</span></button>
             </div>
             <div class="status"></div>
           </div>
+        </form>
           <!--Grid column-->
 
           <!--Grid column-->
@@ -1188,24 +1190,22 @@
         swal("Wanna send a message?","Check it out before sending", "warning", {
   buttons: {
     catch: {
-      text: "Verify",
-      value: "verifying",
+      text: "Send",
+      value: "sending",
     },
-    button:"Send",
+    button:"Verify",
   },
 })
 .then((value) => {
   switch (value) {
 
  
-    case "verifying":
-      swal("Grammarly", "Correct less, write more", "info");
+    case "sending":
+      swal("Your message was sent successfully"," " ,  "success");
       break;
  
     default:
-      swal({
-        title:"Your message was sent successfully",
-      icon: "success",});
+      swal("Grammarly", "Correct less, write more", "info");
   }
 });
 
